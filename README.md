@@ -1,6 +1,3 @@
-ConfigMap
-=========
-
 Backend: spring boot의 application.properties
 ---------------------------------------------
 
