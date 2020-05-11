@@ -82,8 +82,7 @@ spec:
     spec:
       containers:
       - name: bootsample
-        image: gcr.io/accu-platform/bootsample@sha256:c50f899c954ac2bb315a32e6325db580fcd2c06e627d0bad44e2500369aece2c
-        ports:
+        image: gcr.io/<MY_PROJECT>/bootsample:v1
         - containerPort: 8080
         volumeMounts:
         - name: application-config # pod에 마운트할 volume 이름
@@ -104,7 +103,7 @@ spec:
 kubectl create deployment.yaml
 ```
 
--	option) pod local로 curl을 통한 적용 확인
+-	option) pod local로 curl을 통한 적용 확인 (docker build 시, curl 추가해도 됨)
 
 ```shell
 kubectl exec -it <POD_NAME> sh
@@ -112,46 +111,7 @@ apk add curl
 curl localhost:8080
 ```
 
-kubectl create configmap spring-app-config --from-file=src/main/resources/application.properties
-
-kubectl exec -it <pod_name> sh apk add curl
-
-You must create a ConfigMap before referencing it in a Pod specification If you reference a ConfigMap that doesn’t exist, the Pod won’t start.
-
-java -jar easy-notes-1.0.0.jar --spring.config.location=/Users/jinwookchung/Downloads/ --spring.config.file=application-jw-db.properties
-
-java -jar easy-notes-1.0.0.jar --spring.config.location=file:////Users/jinwookchung/IdeaProjects/spring-boot-mysql-rest-api-tutorial/src/main/resources/application-jw-db.properties
-
-/Users/jinwookchung/IdeaProjects/spring-boot-mysql-rest-api-tutorial/src/main/resources/application-jw-db.properties
-
-java -jar easy-notes-1.0.0.jar --spring.config.location=file:////deployments/config/application.properties
-
-Config locations are searched in reverse order. By default, the configured locations are classpath:/,classpath:/config/,file:./,file:./config/. The resulting search order is the following:
-
-1.	file:./config/
-2.	file:./
-3.	classpath:/config/
-4.	classpath:/
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
+<br><br><br>
 
 Frontend: Angular의 environment.ts
 ----------------------------------
